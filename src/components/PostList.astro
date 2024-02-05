@@ -1,0 +1,22 @@
+---
+import { getPosts } from '../lib/posts.js'  ;
+import Post from './Post.astro';
+
+
+const posts = await getPosts();
+if (!posts) {
+  return new Response(null, { 
+    status: 404,
+    statusText: 'Not Found'
+    });
+}
+
+export const partial = true;
+
+---
+<div id="post-list" hx-swap-oob="true">
+    {posts.map((post: {title: string, content: string, createdAt: string}) => (
+        <Post {post} />
+
+    ))}
+</div>

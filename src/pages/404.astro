@@ -1,0 +1,75 @@
+---
+
+const lostPhrases = [
+    "took a wrong turn somewhere...",
+    "i don't know where we are either",
+    "you know, if i had a map, i'd help you out",
+    "i lost my vape it's over here somewhere",
+    "i think we're lost",
+    "i'm not sure where we are",
+    "i think we're in the wrong place",
+    "who are you and how did you get in here?",
+    "this isn't a real place",
+]
+
+const leavePhrases = [
+    "you're not welcome here",
+    "go home kid",
+    "you're not wanted here",
+    "you're not ready for this",
+    "beat it",
+    "kick rocks",
+    "pound sand",
+    "get lost",
+    "scram",
+    "take a hike",
+    "let's get out of here",
+]
+
+
+
+---
+<div style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; padding: 25%">
+    <div>
+        <h1>404 page</h1>
+
+        <div class="bg-black font-mono flex justify-space-around">
+        <h3>
+            {
+                lostPhrases[Math.floor(Math.random() * lostPhrases.length)]
+            }
+        </h3>
+        </div>
+        <div class="my-10">
+        <a href="/" >
+            {
+                leavePhrases[Math.floor(Math.random() * leavePhrases.length)]
+            }    
+        </a>
+        </div>
+    </div>
+</div>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: monospace;
+
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid white;
+            border-radius: 5px;
+        }
+        h1 {
+            font-size: 3em;
+        }
+
+    </style>

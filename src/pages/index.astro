@@ -1,0 +1,23 @@
+---
+
+import NewPostButton from '../components/NewPostButton.astro'
+import Layout from '../layouts/Layout.astro'
+import PostList from '../components/PostList.astro'
+import GoogleAuthButton from '../components/GoogleAuthButton.astro'
+import { getSession } from 'auth-astro/server'
+const session = await getSession(Astro.request)
+
+
+---
+<Layout title="posts">
+    <GoogleAuthButton />
+    
+    <PostList />
+    {session ? 
+    <div id="corner-container" hx-swap="innerHTML" hx-swap-oob="true" class ="right-0 bottom-0 fixed m-4 ">
+        <NewPostButton>
+    </div>
+    : null}
+
+
+</Layout>

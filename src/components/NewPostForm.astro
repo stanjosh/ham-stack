@@ -1,0 +1,50 @@
+---
+import { getSession } from 'auth-astro/server'
+const session = await getSession(Astro.request)
+
+let post = {};
+
+
+---
+<div id="corner-container" hx-swap-oob="outerHTML" class ="right-0 bottom-0 fixed m-4 p-6 max-w-sm mx-auto my-5 bg-white rounded-md mt-lg shadow-lg items-center space-x-4">
+    posting as {session.user.name}
+    <form 
+
+        id="new-post-form" 
+        hx-post="/api/posts/new" 
+        hx-swap="outerHTML swap:1s"
+        hx-transition="true"
+        
+        >
+        <fieldset>
+            <label for="title">Title</label>
+            <input 
+                type="text" 
+                id="title" 
+                name="title" 
+                placeholder="Title"
+                value={post.title}
+                class="w-full border-2 border-gray-300 rounded-lg p-2"
+                required />
+            <label for="content">Content</label>
+            <textarea
+                id="content"
+                name="content"
+                placeholder="Content"
+                value={post.content}
+                required
+                class="h-48 w-full border-2 border-gray-300 rounded-lg p-2"
+                >
+            </textarea>
+            <button 
+            class="bg-blue-500 text-white p-2 rounded-lg mt-4 w-full"
+            type="submit"
+
+            >post
+            <img class="htmx-indicator" src="/tail-spin.svg" style="display: none">
+        </button>
+        </fieldset>
+        
+    </form>
+    
+</div>

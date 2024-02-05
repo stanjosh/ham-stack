@@ -1,0 +1,10 @@
+---
+import Post from '../../../components/Post.astro'
+
+const { post } = Astro.props 
+
+export const partial = true
+
+---
+
+<Post {post} />

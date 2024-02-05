@@ -1,0 +1,30 @@
+---
+import { createPost } from "../../../lib/posts";
+import PostList from "../../../components/PostList.astro";
+import NewPostButton from "../../../components/NewPostButton.astro";
+import { getSession } from 'auth-astro/server';
+const session = await getSession(Astro.request)
+
+let post = {};
+
+if (session && Astro.request.method === "POST") {
+  const formData = await Astro.request.formData();
+    const title = formData.get("title");
+    const content = formData.get("content");
+    post = await createPost({ title, content });
+    console.log(post);
+}
+
+export const partial = true;
+
+---
+{ session ? 
+  <PostList />
+  <NewPostButton />
+  :
+
+  <div><h1>Log in to create a post</h1></div>
+}
+
+
+
