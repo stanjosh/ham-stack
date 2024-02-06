@@ -2,12 +2,12 @@
 const { post } = Astro.props
 export const partial = true
 console.log('updating likes', post)
-
+import { getSession } from 'auth-astro/server';
+const session = await getSession(Astro.request)
 
 let likeCount = post?.likes?.length || 0
 
-
-
+let liked = post?.likes?.includes(session?.user.name) || false 
 
 
 ---
@@ -18,7 +18,7 @@ let likeCount = post?.likes?.length || 0
 
     
     style="width: 4cqw; height:4cqw" 
-    class="like-button"
+    class={`like-button ${liked ? 'liked' : ''}`}
 
     
     >
@@ -46,6 +46,10 @@ let likeCount = post?.likes?.length || 0
     z-index: 1;
     font-family: "Inter", sans-serif;
     color: var(--secondary-text);
+}
+
+.liked {
+    background-image: url(/hearted.svg);
 }
 
 

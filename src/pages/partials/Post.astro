@@ -48,7 +48,7 @@ const prettyYear = dayjs(post.createdAt).format('YYYY')
     flex-direction: column;
     align-items: center;
     margin: 1rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--accent);
     border-radius: 4px;
     padding: 1rem;
 }
@@ -71,6 +71,7 @@ const prettyYear = dayjs(post.createdAt).format('YYYY')
 
 .post-meta {
     font-family: 'Barlow', sans-serif;
+    color: var(--muted);
     width: 100%;
     display: flex;
     justify-content: space-between;
