@@ -1,0 +1,43 @@
+---
+
+export const partial = true
+
+---
+
+<div id="corner-container" hx-swap-oob="outerHTML" class ="">
+
+    <button 
+        id="new-post-button"
+        class=""
+        hx-get="/partials/NewPostForm" 
+        hx-swap="outerHTML transition:true" 
+        hx-trigger="click"
+        
+        ><span>new</span>
+    </button>
+</div>
+
+
+<style>
+
+#corner-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 1em;
+    z-index: 1000;
+}
+
+#new-post-button {
+    background-color: var(--primary);
+    color: var(--background);
+    border: none;
+    padding: 1em;
+    border-radius: 50%;
+    font-family: var(--title-font);
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+</style>

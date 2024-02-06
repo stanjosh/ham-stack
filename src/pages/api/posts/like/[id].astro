@@ -1,0 +1,32 @@
+---
+import LikeButton from "../../../partials/LikeButton.astro"
+import { handleLikePost } from "../../../../lib/posts"
+import { getSession } from 'auth-astro/server';
+const session = await getSession(Astro.request)
+
+const { id } = Astro.params
+
+let newPost: { _id: string, likes: string[], content: string, username: string } =
+      {
+         _id: "",
+         likes: [],
+         content: "",
+         username: ""
+      }
+
+if (session && Astro.request.method === "POST") {
+    const username = session.user.name
+    newPost = await handleLikePost(id, username)
+    
+}
+
+export function getStaticPath() {
+   return [
+      { params: {id: "1"} }
+   ];
+} 
+
+console.log(id)
+---
+
+<LikeButton post={newPost} />

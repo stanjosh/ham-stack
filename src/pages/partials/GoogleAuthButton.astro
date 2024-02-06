@@ -7,14 +7,14 @@ export const partial = true
 ---
 
 {session ? 
-    <div class ="right-0 top-0 fixed m-4">
+    <div class ="">
        
         <SignOut class='gsi-material-button'>
             
             <div class="hover:bg-red100 gsi-material-button-state"></div>
                 <div class="gsi-material-button-content-wrapper">
                     
-                        <img class="h-7 rounded-full" src={session.user?.image} alt={session.user?.name} />
+                        <img class="" src={session.user?.image} alt={session.user?.name} />
                     
                     <span class="gsi-material-button-contents px-3">signed in</span>
                     <span style="display: none;">signed in</span>
@@ -23,7 +23,7 @@ export const partial = true
         </SignOut>
     </div> 
     :
-    <div class ="right-0 top-0 fixed m-4">
+    <div class ="">
         <SignIn provider="google" class='gsi-material-button' hx-swap="outerHTML">            
 
 

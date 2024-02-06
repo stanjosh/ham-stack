@@ -1,0 +1,50 @@
+---
+
+
+import { getSession } from 'auth-astro/server'
+const session = await getSession(Astro.request)
+
+let post: {content: string} = {
+    content: ""
+}; 
+
+---
+<div 
+    id="corner-container" 
+    hx-swap-oob="outerHTML" 
+    style = "width: 100%;"
+    class=""
+    >
+    <form 
+        id="new-post-form" 
+        hx-post="/api/posts/new" 
+        hx-swap="outerHTML swap:1s"
+        hx-transition="true"
+        style = "width: 100%;"
+        >
+        <fieldset>
+            <textarea
+                id="content"
+                name="content"
+                placeholder="What's on your mind?"
+                value={post.content}
+                rows="3"
+                autofocus
+                required
+                class=""
+                />
+            </textarea>
+            <label for="content" hidden>Content</label>
+            <div class="">posting as {session.user.name}</div>
+            <button 
+            class=""
+            type="submit"
+            hx-disabled-elt="this"
+            >post
+            <img class="htmx-indicator" src="/tail-spin.svg" style="display: none">
+        </button>
+        </fieldset>
+        
+    </form>
+    
+</div>

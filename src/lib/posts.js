@@ -1,34 +1,45 @@
+
 import { Posts } from "./mongodb"
-import { getServerSession } from 'auth-astro/server'
+import { ObjectId } from "mongodb"
 
 
 export const getPosts = async (req, res) => {
     return await (await Posts()).find({}).sort({"createdAt": -1}).toArray()
 }
 
-export const createPost = async ({title, content}) => {
-    const session = await getServerSession(req, res, authOptions)
-
-    if (!session) {
-      res.status(401).json({ message: "You must be logged in." });
-      return;
-    }
-
-    console.log(session)
-
+export const createPost = async ({content, username}) => {
     const record = await (await Posts()).insertOne({ 
-        title, 
         content, 
+        username,
+        likes: [],
         createdAt: new Date(), 
-        
-
     });
-    return {id: record.insertedId, ...{title, content}}
+    return record
 }
 
 export const getPost = async (id) => {
     return await (await Posts()).findOne({ _id: id })
 }
 
+export const handleLikePost = async (id, username) => {
+    const record = await (await Posts()).findOne({ _id: new ObjectId(id) })
+    if (record && record.likes?.includes(username)) {
+        record.likes = record.likes.filter((like) => like !== username)
+    } else if (record && !record.likes) {
+        record.likes = [username]
+    } else {
+        record.likes.push(username)
+    }
+    await (await Posts()).updateOne({ _id: new ObjectId(id) }, { $set: { likes: record.likes } })
+    
 
+    return record
+}
+
+
+
+export const getLikes = async (id) => {
+    const record = await (await Posts()).findOne({ _id: id })
+    return record.likes
+}
 

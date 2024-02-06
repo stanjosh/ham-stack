@@ -14,7 +14,7 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		
-		<link href="/output.css" rel="stylesheet">
+		<link href="/base.css" rel="stylesheet">
 		<meta name="generator" content={Astro.generator} />
 		<script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
 		<title>{title}</title>
@@ -24,3 +24,19 @@ const { title } = Astro.props;
 	</body>
 </html>
 
+<style is:global>
+	@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Inter+Tight&display=swap');
+
+	:root {
+		--primary: #2b6cb0;
+		--secondary: #2a3046;
+		--secondary-text: #e2e8f0;
+		--accent: #f56565;
+		--background: #f7fafc;
+		--text: #2d3748;
+		--muted: #a0aec0;
+		--title-font: 'Barlow', sans-serif;
+		--body-font: 'Inter Tight', sans-serif;
+	}
+
+</style>

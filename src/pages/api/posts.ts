@@ -1,3 +1,6 @@
+
+
+
 import { getPosts, createPost } from '../../lib/posts'
 
 export const get = async () => {

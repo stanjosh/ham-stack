@@ -1,0 +1,33 @@
+---
+import { getPosts } from '../../lib/posts.js'  ;
+import { post } from '../api/posts';
+import Post from './Post.astro';
+
+
+const posts = await getPosts()
+
+
+if (!(await posts)) {
+  return new Response(null, { 
+    status: 404,
+    statusText: 'Not Found'
+    });
+} else {
+    posts.forEach(post => {
+    post._id = post._id.toString();
+    });
+}
+    
+
+console.log(posts);
+
+
+export const partial = true;
+
+---
+<div id="post-list" hx-swap-oob="true" >
+    {posts.map((post: {_id: string, title: string, content: string, createdAt: string}) => (
+        <Post {post} />
+
+    ))}
+</div>
