@@ -8,5 +8,8 @@ export default defineConfig({
   adapter: node({
     mode: "standalone"
   }),
+  server: {
+    host: "0.0.0.0"
+  },
   integrations: [ auth()]
 });
