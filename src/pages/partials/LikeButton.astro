@@ -1,7 +1,6 @@
 ---
 const { post } = Astro.props
 export const partial = true
-console.log('updating likes', post)
 import { getSession } from 'auth-astro/server';
 const session = await getSession(Astro.request)
 

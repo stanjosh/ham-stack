@@ -9,18 +9,13 @@ let post: {content: string} = {
 }; 
 
 ---
-<div 
-    id="corner-container" 
-    hx-swap-oob="outerHTML" 
-    style = "width: 100%;"
-    class=""
-    >
     <form 
         id="new-post-form" 
         hx-post="/api/posts/new" 
         hx-swap="outerHTML swap:1s"
         hx-transition="true"
         style = "width: 100%;"
+        
         >
         <fieldset>
             <textarea
@@ -34,17 +29,62 @@ let post: {content: string} = {
                 class=""
                 />
             </textarea>
+            <div style="display: flex; width: 100%; justify-content: space-between">
+            <button hx-get="/partials/NewPostButton" hx-target="#corner-container" hx-swap="innerHTML transition:true" >
+                nevermind
+            </button>
             <label for="content" hidden>Content</label>
-            <div class="">posting as {session.user.name}</div>
+           
             <button 
             class=""
             type="submit"
             hx-disabled-elt="this"
             >post
-            <img class="htmx-indicator" src="/tail-spin.svg" style="display: none">
-        </button>
+            
+            </button>
+            </div>
         </fieldset>
         
     </form>
     
-</div>
+
+
+<style>
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: right;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        background-color: var(--primary);
+        border-radius: 5px;
+    }
+
+    fieldset {
+        display: flex;
+        border: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    textarea {
+        width: 100%;
+        padding: 0.5rem;
+        margin: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        resize: vertical;
+    }
+
+    button {
+        padding: 0.5rem;
+        margin: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        background-color: #f0f0f0;
+        cursor: pointer;
+    }
+</style>

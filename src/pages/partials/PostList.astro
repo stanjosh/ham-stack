@@ -1,6 +1,5 @@
 ---
 import { getPosts } from '../../lib/posts.js'  ;
-import { post } from '../api/posts';
 import Post from './Post.astro';
 
 
@@ -19,7 +18,6 @@ if (!(await posts)) {
 }
     
 
-console.log(posts);
 
 
 export const partial = true;

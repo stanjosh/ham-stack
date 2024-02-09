@@ -4,29 +4,22 @@ export const partial = true
 
 ---
 
-<div id="corner-container" hx-swap-oob="outerHTML" class ="">
+
 
     <button 
         id="new-post-button"
         class=""
         hx-get="/partials/NewPostForm" 
-        hx-swap="outerHTML transition:true" 
-        hx-trigger="click"
-        
-        ><span>new</span>
+        hx-swap="innerHTML transition:true" 
+        hx-target="#corner-container"
+        hx-trigger="click, keyup[altKey&&key=='n'] from:body"
+        >new
     </button>
-</div>
+
 
 
 <style>
 
-#corner-container {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    padding: 1em;
-    z-index: 1000;
-}
 
 #new-post-button {
     background-color: var(--primary);

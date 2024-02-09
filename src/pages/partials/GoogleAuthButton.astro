@@ -8,17 +8,18 @@ export const partial = true
 ---
 
 {session ? 
-    <div class ="">
+    <div class ="google-auth-button">
        
         <SignOut class='gsi-material-button'>
             
             <div class="hover:bg-red100 gsi-material-button-state"></div>
                 <div class="gsi-material-button-content-wrapper">
                     
-                        <img class="" src={session.user?.image} alt={session.user?.name} />
+                        <img class="" src={session.user?.image} alt={session.user?.name} referrerpolicy="no-referrer"/>
                     
-                    <span class="gsi-material-button-contents px-3">signed in</span>
-                    <span style="display: none;">signed in</span>
+                    <span class="gsi-material-button-contents px-3">signed in as {session.user?.name}</span>
+                    <span style="display: none;">signed in as {session.user?.name}</span>
+                    
                 </div>    
                 <div>
                  
@@ -29,7 +30,7 @@ export const partial = true
         </SignOut>
     </div> 
     :
-    <div class ="">
+    <div class ="google-auth-button">
         <SignIn provider="google" class='gsi-material-button' hx-swap="outerHTML">            
           <div class="gsi-material-button-state"></div>
           <div class="gsi-material-button-content-wrapper">
@@ -54,6 +55,15 @@ export const partial = true
 
 
 <style>
+.google-auth-button {
+  position: fixed;
+  height: 100%;
+  top: 20px;
+  
+  right: 20px;
+}
+
+
 .gsi-material-button {
     -moz-user-select: none;
     -webkit-user-select: none;
