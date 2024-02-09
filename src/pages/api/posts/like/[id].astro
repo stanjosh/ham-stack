@@ -4,6 +4,9 @@ import { handleLikePost } from "../../../../lib/posts"
 import { getSession } from 'auth-astro/server';
 const session = await getSession(Astro.request)
 
+console.log(Astro.request)
+console.log(session)
+
 const { id } = Astro.params
 
 let newPost: { _id: string, likes: string[], content: string, username: string } =

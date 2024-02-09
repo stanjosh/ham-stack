@@ -31,7 +31,7 @@ export const connectToDB = async () => {
   return mongo.db(import.meta.env.MONGODB_DB);
 };
 
-export const clientPromise = await getDB();
+export const clientPromise = await await new MongoClient(uri, options).connect();
 
 export const Posts = async () => {
   const db = await getDB();
