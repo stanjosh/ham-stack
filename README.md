@@ -8,3 +8,5 @@ I found that Astro is really good at this sort of thing and HTMX makes it slick 
 There's not much to it, you can sign in and blog. Swapping elements with HTMX and server rendering makes it pretty slick overall
 
 I'll probably use this for my next similar project
+
+[demo](https://ham-stack-production.up.railway.app)
